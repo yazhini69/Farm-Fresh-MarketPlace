@@ -49,13 +49,15 @@ The system should be:
 
 ## 📷 UI Screenshots
 
-> _(Add images like "Farmer Form", "Product View Page", "Order Confirmation" etc.)_
-
-```markdown
 ### 👨‍🌾 Farmer Product Entry
+<img width="1920" height="1128" alt="Screenshot 2025-07-25 193603" src="https://github.com/user-attachments/assets/78b58fc3-5e9c-45fa-bc49-23a535ef1c56" />
 
 
 ### 🛍️ Consumer Marketplace View
+<img width="1920" height="1128" alt="Screenshot 2025-07-25 193627" src="https://github.com/user-attachments/assets/30589723-813a-402f-aa1e-ca317a74d989" />
+
+### 🛍️ Orders View
+<img width="1920" height="1128" alt="Screenshot 2025-07-25 193636" src="https://github.com/user-attachments/assets/cc54d576-13b0-4292-ab07-67d4e82e4956" />
 
 
 ## 🛠️ Setup Instructions
