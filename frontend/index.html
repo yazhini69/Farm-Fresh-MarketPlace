@@ -8,108 +8,206 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding: 20px;
-      background-color: #f4f4f4;
+      min-height: 100vh; margin: 0; padding: 0;
+      background:
+        linear-gradient(120deg, #effaec 60%, #e9f9e4 100%),
+        url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80')
+        no-repeat center/cover;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed; left:0; top:0; right:0; bottom:0;
+      background: rgba(245,255,245,0.82);
+      backdrop-filter: blur(0.5px);
+      z-index: 0;
+      pointer-events: none;
     }
 
     .form-container {
-      max-width: 500px;
-      margin: auto;
-      background: #fff;
-      padding: 24px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 470px;
+      margin: 54px auto 0 auto;
+      background: rgba(255,255,255,0.85);
+      border-radius: 22px;
+      box-shadow:
+        0 8px 36px 0 #69e26909,
+        0 2.5px 12px #45a04922;
+      padding: 34px 34px 18px 34px;
+      position: relative;
+      z-index: 10;
+      /* glassiness */
+      backdrop-filter: blur(3.5px);
+      -webkit-backdrop-filter: blur(3.5px);
+      transition: box-shadow 0.25s;
+    }
+    .form-container:hover {
+      box-shadow:
+        0 14px 52px #4caf5032,
+        0 5px 22px #a4e83822;
     }
 
     .page-header {
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 25px;
     }
-
     .page-header h1 {
-      color: #2c3e50;
-      margin-bottom: 8px;
-      font-weight: 600;
-      font-size: 28px;
+      color: #268843;
+      margin-bottom: 9px;
+      font-weight: 900;
+      font-size: 2.3rem;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 10px #9ff58b1c, 1.5px 1.5px 2px #fff4;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
     }
-
     .page-header .emoji {
-      font-size: 1.3em;
-      vertical-align: middle;
+      font-size: 2.1em; filter: drop-shadow(0 2px 8px #fada5e33);
     }
-
     .subtitle {
-      font-size: 15px;
-      color: #666;
-      margin: 0;
-    }
+  font-size: 18px;
+  font-weight: 700;
+  color: #18460b; /* Rich dark green */
+  background: linear-gradient(90deg, #ffee9c 0%, #ffe066 50%, #fff44f 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  /* Bold shadow for visibility on any background */
+  text-shadow:
+    0 2px 10px #fffbc2,
+    0 1.5px 0px #364700cc,
+    0 0px 2px #ffe066;
+  margin: 0;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
 
     label {
       display: block;
-      margin: 12px 0 4px;
+      margin: 18px 0 4px 2px;
       font-weight: bold;
-      color: #333;
+      color: #286b3a;
+      font-size: 1rem;
+      letter-spacing: 0.12px;
     }
-
     input, textarea, button {
       width: 100%;
-      padding: 10px;
-      margin-top: 6px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 14px;
+      padding: 13px 12px;
+      margin-top: 5px;
+      border: 1.6px solid #b9eeb6;
+      border-radius: 6px;
+      font-size: 15.3px;
+      background: #f6fcf7cf;
+      transition: border 0.15s, box-shadow 0.15s;
+      font-family: inherit;
+      box-sizing: border-box;
     }
-
     input[type="file"] {
-      padding: 4px;
+      border: 2px dashed #317a3e85;
+      background: #f9fce7;
+      padding: 9px 7px;
+      font-size: 1rem;
+      cursor: pointer;
     }
-
+    input[type="file"]:focus {
+      border-color: #3be482;
+      background: #eeffe3;
+    }
     input:focus, textarea:focus {
-      border-color: #28a745;
-      outline: none;
-      box-shadow: 0 0 4px rgba(40, 167, 69, 0.2);
+      border-color: #46e17a;
+      box-shadow: 0 0 6px #cdf9d7;
+      background: #f1fff7ed;
     }
-
+    textarea { min-height: 52px; resize: vertical; }
     button {
-      background: #28a745;
-      color: white;
+      background: linear-gradient(93deg, #46c262 60%, #76ffb4 100%);
+      color: #fff;
       font-weight: bold;
       border: none;
-      margin-top: 16px;
+      margin-top: 24px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      box-shadow: 0 3.1px 12px #a5efb933;
+      font-size: 1.13rem;
+      border-radius: 9px;
+      letter-spacing: 0.8px;
+      transition: background 0.23s, box-shadow 0.2s, transform 0.13s;
+      position: relative;
+      overflow: hidden;
+      min-height: 47px;
     }
-
     button:hover {
-      background: #218838;
+      background: linear-gradient(88deg, #218838 66%, #eaffca 100%);
+      box-shadow: 0 6px 24px #8fffb855;
+      transform: translateY(-2px) scale(1.03);
+    }
+    /* Animate button glow */
+    button::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0; left: -90px; width: 60px; height: 100%;
+      background: linear-gradient(120deg,#fffefaaa 10%,#c5ffddb6 56%,#5dec8980 90%);
+      filter: blur(14px);
+      opacity: 0.85;
+      transform: skewX(-16deg);
+      transition: none;
+      animation: btn-glow 1.3s infinite linear;
+    }
+    @keyframes btn-glow {
+      0%{left:-90px;opacity:0.13;}
+      44%{left:calc(100% + 50px);opacity:0.18;}
+      45%{opacity:0;}
+      100%{left:calc(100% + 50px);opacity:0;}
     }
 
     .links {
       text-align: center;
-      margin-top: 24px;
+      margin-top: 28px;
+      z-index: 1;
     }
-
     .links a {
-      display: block;
-      color: #007bff;
+      display: inline-block;
+      color: #207464;
       text-decoration: none;
-      margin-bottom: 8px;
-      font-weight: 500;
+      margin: 0 9px;
+      font-weight: 600;
+      letter-spacing: 0.15px;
+      padding: 2px 8px 2px 2px;
+      border-radius: 4px;
+      background: #e7ffe3b8;
+      transition: background 0.21s, color 0.18s;
+      font-size: 1.06em;
     }
-
     .links a:hover {
       text-decoration: underline;
+      background: #bbffce;
+      color: #155723;
+    }
+
+    @media (max-width: 640px) {
+      .form-container {padding: 20px 5vw;}
+      h1 {font-size: 1.4rem;}
+      .page-header h1 {font-size:1.19rem;}
+    }
+    @media (max-width: 430px) {
+      .form-container {padding-left:3vw; padding-right:3vw;}
+      h1 {font-size: 1.1rem;}
+      .page-header h1 {font-size:1.13rem;}
     }
   </style>
 </head>
 <body>
   <div class="form-container">
     <header class="page-header">
-      <h1><span class="emoji">🌾</span> FarmFresh Admin <span class="emoji">🛍️</span></h1>
+      <h1>
+        <span class="emoji">🌾</span>
+        FarmFresh Admin
+        <span class="emoji">🛍️</span>
+      </h1>
       <p class="subtitle">Add a new organic product to your store</p>
     </header>
 
-    <form id="productForm">
+    <form id="productForm" autocomplete="off">
       <label for="name">Product Name</label>
       <input name="name" id="name" placeholder="E.g. Fresh Tomatoes" required />
 
@@ -117,12 +215,12 @@
       <textarea name="description" id="description" placeholder="Short description" rows="3" required></textarea>
 
       <label for="price">Price per Kg (₹)</label>
-      <input name="price" id="price" type="number" step="0.01" required />
+      <input name="price" id="price" type="number" step="0.01" min="0" required />
 
       <label for="image">Product Image</label>
       <input name="image" id="image" type="file" accept="image/*" required />
 
-      <button type="submit">Submit</button>
+      <button type="submit">➕ Submit Product</button>
     </form>
 
     <div class="links">
@@ -146,6 +244,7 @@
         if (!res.ok) throw new Error(resp.error || 'Failed to add product');
         alert("✅ Product added successfully!");
         form.reset();
+        document.querySelector('input[type="file"]').value="";
       } catch (e) {
         alert("❌ " + e.message);
       }
