@@ -82,5 +82,12 @@
     "price": 35,
     "description": "fresh",
     "imageUrl": "/uploads/1753370096387-images.webp"
+  },
+  {
+    "id": 1754122295464,
+    "name": "potato",
+    "price": 30,
+    "description": "fresh",
+    "imageUrl": "/uploads/1754122295455-potato.jpg"
   }
 ]
