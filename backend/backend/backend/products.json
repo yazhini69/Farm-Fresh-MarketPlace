@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1753099642427,
+    "name": "potato",
+    "price": 30,
+    "description": "big size",
+    "imageUrl": "/uploads/1753099642426-potato.jpg"
+  },
+  {
+    "id": 1753100829022,
+    "name": "brinjal",
+    "price": 35,
+    "description": "naturally grown",
+    "imageUrl": "/uploads/1753100828966-brinjal.jpg"
+  },
+  {
+    "id": 1753106213362,
+    "name": "tomato",
+    "price": 30,
+    "description": "fresh",
+    "imageUrl": "/uploads/1753106213337-tomatoes-1296x728-feature.jpg"
+  },
+  {
+    "id": 1753114265821,
+    "name": "ladies finger",
+    "price": 25,
+    "description": "straight from farm",
+    "imageUrl": "/uploads/1753114265811-ladies_finger.jpg"
+  },
+  {
+    "id": 1753114290616,
+    "name": "beetroot",
+    "price": 35,
+    "description": "home fresh",
+    "imageUrl": "/uploads/1753114290614-beetroot.jpg"
+  },
+  {
+    "id": 1753114319609,
+    "name": "onion",
+    "price": 30,
+    "description": "big onion with nature friendly",
+    "imageUrl": "/uploads/1753114319606-onion.jpeg"
+  },
+  {
+    "id": 1753114344085,
+    "name": "rice",
+    "price": 500,
+    "description": "no pesticides used",
+    "imageUrl": "/uploads/1753114344083-rice.jpg"
+  },
+  {
+    "id": 1753115420826,
+    "name": "tomato",
+    "price": 25,
+    "description": "fresh and save your lives ",
+    "imageUrl": "/uploads/1753115420821-tomatoes-1296x728-feature.jpg"
+  },
+  {
+    "id": 1753154099908,
+    "name": "tomato",
+    "price": 25,
+    "description": "hghc",
+    "imageUrl": "/uploads/1753154099880-ladies_finger.jpg"
+  },
+  {
+    "id": 1753154565534,
+    "name": "rice",
+    "price": 600,
+    "description": "fresh and new harvest",
+    "imageUrl": "/uploads/1753154565528-rice.jpg"
+  },
+  {
+    "id": 1753157667376,
+    "name": "brinjal",
+    "price": 35,
+    "description": "kjmndwfu",
+    "imageUrl": "/uploads/1753157667253-brinjal.jpg"
+  },
+  {
+    "id": 1753370096412,
+    "name": "tomato",
+    "price": 35,
+    "description": "fresh",
+    "imageUrl": "/uploads/1753370096387-images.webp"
+  }
+]

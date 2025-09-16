@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <title>View Products</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #fafafa; }
+    .product {
+      border: 1px solid #ddd; margin-bottom: 15px;
+      padding: 15px; background: #fff; border-radius: 6px;
+    }
+    img { max-width: 100%; border-radius: 6px; }
+    label { margin-right: 8px; }
+    button {
+      cursor: pointer; background: #28a745; border: none;
+      color: #fff; padding: 8px 12px; border-radius: 4px;
+    }
+    button:disabled { opacity: 0.6; }
+  </style>
+</head>
+<script src="script.js"></script>
+<body>
+  <p><a href="index.html">➕ Add New Product</a></p>
+  <h1>Products</h1>
+  <div id="products">Loading...</div>
+
+  <script>
+    async function loadProducts() {
+      const c = document.getElementById("products");
+      try {
+        const res = await fetch("http://localhost:5000/api/products");
+        const arr = await res.json();
+        c.innerHTML = "";
+        if (!arr.length) return c.textContent = "No products available.";
+
+        arr.forEach(p => {
+          const el = document.createElement("div");
+          el.className = "product";
+          el.innerHTML = `
+            <h2>${p.name}</h2>
+            <img src="http://localhost:5000${p.imageUrl}" alt="${p.name}"/>
+            <p><strong>Price per Kg:</strong> ₹${p.price.toFixed(2)}</p>
+            <p>${p.description}</p>
+            <label>Quantity: <input type="number" id="q${p.id}" value="1" min="1" style="width:60px"/></label>
+            <button id="b${p.id}" onclick="order(${p.id})">Order Now</button>
+          `;
+          c.appendChild(el);
+        });
+      } catch (e) {
+        c.textContent = "Failed to load products.";
+      }
+    }
+
+  async function order(id) {
+  const qtyEl = document.getElementById("q"+id);
+  const btn = document.getElementById("b"+id);
+  const qty = Number(qtyEl.value);
+  if (!qty || qty < 1) return alert("Quantity must be 1 or more");
+
+  btn.disabled = true;
+  btn.textContent = "Ordering…";
+
+  const name = prompt("Your name (optional):")?.trim() || "";
+  const phone = prompt("Phone (optional):")?.trim() || "";
+  const address = prompt("Delivery address (required):")?.trim();
+  if (!address) {
+    alert("Address is required to place an order.");
+    btn.disabled = false;
+    btn.textContent = "Order Now";
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:5000/api/orders", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+     body: JSON.stringify({ productId: id, quantity: qty, customerName: name, customerPhone: phone, address })
+
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "Order failed");
+    alert("✅ Order placed successfully!");
+  } catch (e) {
+    alert("❌ " + e.message);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Order Now";
+  }
+}
+    loadProducts();
+  </script>
+</body>
+</html>
