@@ -229,26 +229,27 @@
     </div>
   </div>
 
-  <script>
-    document.getElementById("productForm").addEventListener("submit", async event => {
-      event.preventDefault();
-      const form = event.target;
-      const data = new FormData(form);
+<script>
+  document.getElementById("productForm").addEventListener("submit", async event => {
+    event.preventDefault();
+    const form = event.target;
+    const data = new FormData(form);
 
-      try {
-        const res = await fetch("http://localhost:5000/api/products", {
-          method: "POST",
-          body: data
-        });
-        const resp = await res.json();
-        if (!res.ok) throw new Error(resp.error || 'Failed to add product');
-        alert("✅ Product added successfully!");
-        form.reset();
-        document.querySelector('input[type="file"]').value="";
-      } catch (e) {
-        alert("❌ " + e.message);
-      }
-    });
-  </script>
+    try {
+      const res = await fetch("http://localhost:5000/api/products", {
+        method: "POST",
+        body: data
+      });
+      const resp = await res.json();
+      if (!res.ok) throw new Error(resp.error || 'Failed to add product');
+      alert("✅ Product added successfully!");
+      form.reset();
+      document.querySelector('input[type="file"]').value="";
+    } catch (e) {
+      alert("❌ " + e.message);
+    }
+  });
+</script>
+
 </body>
 </html>

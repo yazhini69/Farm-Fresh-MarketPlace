@@ -114,9 +114,11 @@ app.get("/api/orders", (req, res) => {
 });
 
 // Multer error handler
-app.use((err, req, res, next) => {
-  if (err) return res.status(400).json({ error: err.message });
-});
+app.use(cors({
+  origin: "*", // For development only; not for production!
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+}));
 
 // Start server
 app.listen(PORT, () => {
